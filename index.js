@@ -1,25 +1,29 @@
-const driver = {};
+const driver = {
+    name: 'Sam',
+    address: '11 Broadway'
+};
 
-function updateDriverWithKeyAndValue(driver, key, value) {
-    return Object.assign({}, driver, { [key]: value });
-}
+const newDriver = {
+    name: 'Fred'
+};
 
-function destructivelyUpdateDriverWithKeyAndValue(driver, key, value) {
-    driver[key] = value;
+const updateDriverWithKeyAndValue = (obj, key, value) => {
+    return Object.assign({}, obj, { [key]: value });
+};
 
-    return driver;
-}
+const destructivelyUpdateDriverWithKeyAndValue = (obj, key, value) => {
+    obj[key] = value;
+    return obj;
+};
 
-function deleteFromDriverByKey(driver, key) {
-    const newObj = Object.assign({}, driver);
+const deleteFromDriverByKey = (driver, key) => {
+    const newDriver = Object.assign({}, driver, key);
+    delete newDriver[key];
+    return newDriver;
+};
 
-    delete newObj[key];
-
-    return newObj;
-}
-
-function destructivelyDeleteFromDriverByKey(driver, key){
-    delete driver[key];
-
-    return driver;
-}
+const destructivelyDeleteFromDriverByKey = (driver, key) => {
+    const newDriver = Object.assign(driver, key);
+    delete newDriver.name;
+    return newDriver;
+};
